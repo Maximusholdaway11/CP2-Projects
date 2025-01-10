@@ -5,7 +5,7 @@ def SaveDeposits(AmountToSave, WeeklyOrMonthly, TotalSavingsGoal):
     #Seeing if the user chose Weekly or Monthly saving
     if WeeklyOrMonthly.lower() == "weekly":
         #How many weeks they need to save for to get their goal
-        WeeksToSave = 0
+        WeeksToSave = 1
         #A number used to determine how many weeks are needed to save
         WeeklySavings = AmountToSave
         #The loop used to find out how many weeks they need to save for
@@ -97,6 +97,7 @@ def TipCalculator(PriceOfItems):
 #The main function or user interface
 def main():
     while True:
+        #Getting the users decision on what they want to do
         UserDecision = int(input("""Which tool do you want to use? Type the numbers that they start with to choose said tool or option.
                                  1. Saving Deposits Calculator
                                  2. Interest Calculator
@@ -104,16 +105,26 @@ def main():
                                  4. Dicount Calculator
                                  5. Tip Calculator
                                  6. Exit\n"""))
+        #Checking if the user chooses 1
         if UserDecision == 1:
+            #Getting the amount the user wants to save
             UserAmountToSave = float(input("How much are you saving per month or week?: "))
+            #Asking if the user is saving weekly or monthly
             UserWeeklyOrMonthly = str(input("Are you saving weekly or monthly?: "))
+            #Getting the total savings goal from the user
             UserTotalSavingsGoal = float(input("How much money are you trying to save?: "))
+            #Clarifying what this will do
             print("This will show you how many weeks or months you need to save for to get that amount of money.")
+            #Making a space between these lines
             print("")
+            #Showing the user how many weeks or months they need to save for to get their goal.
             print(f"You will need to save for this many weeks or months to get that amount of money: {SaveDeposits(UserAmountToSave, UserWeeklyOrMonthly, UserTotalSavingsGoal)}")
+        #Checking if the user chooses 2
         elif UserDecision == 2:
             UserMoneyAmount = float(input("How much money are you starting with?: "))
             UserInterest = float(input("Please type your interest in the way of like 20 percent (Not using the percent symbol or word): "))
             UserTypeOfInterestTime = str(input("Is your interest being compounded for days, weeks, months, or years?: "))
             UserInterestTime = int(input(f"How many {UserTypeOfInterestTime} is the interest going to last for?: "))
-            print("You will have")
+            print(f"You will have this much money after this many {UserTypeOfInterestTime}: {CompoundInterest(UserMoneyAmount, UserInterest, UserInterestTime)}")
+
+main()
