@@ -89,10 +89,8 @@ def TipCalculator(PriceOfItems):
     elif PriceOfItems >= 101:
         #Having them do a 15 dollar tip
         Tip = 15
-    #Applying their tip to their total price
-    PriceOfItems += Tip
-    #Using the new total price
-    return PriceOfItems
+    #Using the tip
+    return Tip
 
 #The main function or user interface
 def main():
@@ -121,10 +119,49 @@ def main():
             print(f"You will need to save for this many weeks or months to get that amount of money: {SaveDeposits(UserAmountToSave, UserWeeklyOrMonthly, UserTotalSavingsGoal)}")
         #Checking if the user chooses 2
         elif UserDecision == 2:
+            #Getting the users starting amount of money
             UserMoneyAmount = float(input("How much money are you starting with?: "))
+            #Getting the interest rates
             UserInterest = float(input("Please type your interest in the way of like 20 percent (Not using the percent symbol or word): "))
+            #Asking if its days, weeks, or months.
             UserTypeOfInterestTime = str(input("Is your interest being compounded for days, weeks, months, or years?: "))
+            #How many days, weeks, or months it goes on for.
             UserInterestTime = int(input(f"How many {UserTypeOfInterestTime} is the interest going to last for?: "))
+            #Showing the user the interest
             print(f"You will have this much money after this many {UserTypeOfInterestTime}: {CompoundInterest(UserMoneyAmount, UserInterest, UserInterestTime)}")
-
-main()
+        #Checking if user chooses 3
+        elif UserDecision == 3:
+            #Getting the amount of money used for the budgeting
+            UserBudgetAmount = float(input("Please give the total amount of money used for budgeting: "))
+            #Getting the list used for budgeting
+            BudgetAllocatedList = BudgetAllocator(UserBudgetAmount)
+            #Giving the user the budget amounts
+            print(f"""Here is your budgeting plan Food: {BudgetAllocatedList[0]}
+                                                  Entertainment: {BudgetAllocatedList[1]}
+                                                  Savings: {BudgetAllocatedList[2]}""")
+        #Checking if user chooses 4
+        elif UserDecision == 4:
+            #Getting the price of the item
+            UserCostOfItem = float(input("Please give the original price of the item: "))
+            #Getting the discount
+            UserDiscount = int(input("Please give me the discount in similar fashion to the interest (Say like 20 percent without the word percent): "))
+            #Showing the user the discount they will get
+            print(f"This is the item after the discount: {SalesPriceCalculator(UserCostOfItem, UserDiscount)}")
+        #Checking if user chooses 5
+        elif UserDecision == 5:
+            #Getting the total price of the users items
+            UserTotalPrice = float(input("Please give me the total price of your items: "))
+            #Showing them the tip they will pay
+            print(f"This is the tip you will need to pay: {TipCalculator(UserTotalPrice)}")
+        #Checking if user chooses 6
+        elif UserDecision == 6:
+            #Sending a goodbye/exit message
+            print("Hope this financial calculator was useful!")
+            #Ending the calculator
+            break
+        #Checking if the user didn't choose numbers 1-6
+        elif UserDecision > 6:
+            #Making sure the user knows they didn't select an option
+            print("You have not selected one of the options please try again.")
+            #Bypassing this iteration of the calculator
+            continue
