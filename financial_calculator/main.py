@@ -42,6 +42,8 @@ def CompoundInterest(MoneyAmount, Interest, InterestTime):
     for x in range(InterestTime):
         #Calculating the interest the user would gain based on the numbers
         MoneyAmount += (MoneyAmount * Interest)
+    #Rounding the value to two decimals
+    MoneyAmount = round(MoneyAmount, 2)
     #Using the MoneyAmount variable
     return MoneyAmount
 
@@ -137,8 +139,8 @@ def main():
             BudgetAllocatedList = BudgetAllocator(UserBudgetAmount)
             #Giving the user the budget amounts
             print(f"""Here is your budgeting plan Food: {BudgetAllocatedList[0]}
-                                                  Entertainment: {BudgetAllocatedList[1]}
-                                                  Savings: {BudgetAllocatedList[2]}""")
+                            Entertainment: {BudgetAllocatedList[1]}
+                            Savings: {BudgetAllocatedList[2]}""")
         #Checking if user chooses 4
         elif UserDecision == 4:
             #Getting the price of the item
@@ -165,3 +167,5 @@ def main():
             print("You have not selected one of the options please try again.")
             #Bypassing this iteration of the calculator
             continue
+
+main()
