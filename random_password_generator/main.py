@@ -80,10 +80,11 @@ def password_assembler(password_length, special_choice, num_choice, up_low_choic
 def main():
     print("This is a password generator that generates four passwords per use and based on specifications.")
     user_up_low_choice = str(input("Do you want just uppercase letters, just lowercase letters, or both in your password? (type lower for lowercase, upper for uppercase, and both for both): "))
-    if user_up_low_choice != "Yes" or "No" or "Both":
+    user_up_low_choice = user_up_low_choice.lower()
+    if user_up_low_choice != "lower" or "upper" or "both":
         print("You need to select a choice for this please try again.")
         user_up_low_choice = str(input("Do you want just uppercase letters, just lowercase letters, or both in your password? (type lower for lowercase, upper for uppercase, and both for both): "))
-        if user_up_low_choice != "Yes" or "No" or "Both":
+        if user_up_low_choice != "lower" or "upper" or "both":
             print("You really need to select a choice for this you will have letters in your password that is how this program works.")
             user_up_low_choice = str(input("Do you want just uppercase letters, just lowercase letters, or both in your password? (type lower for lowercase, upper for uppercase, and both for both): "))
     user_special_choice = str(input("Do you want special characters in your password? (just type yes or no): "))
