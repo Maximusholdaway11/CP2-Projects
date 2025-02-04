@@ -112,7 +112,7 @@ def main():
         print("This needs to be a number please try again.")
         user_password_length = input("How long do you want your password to be?: ")
         if not user_password_length.isnumeric():
-            print("Are you trying to break my program? Please type in a number")
+            print("Are you trying to break my program? Please type in a number.")
             user_password_length = input("How long do you want your password to be?: ")
             if not user_password_length.isnumeric():
                 print("Okay you don't get to choose anymore defaulting to password length 16.")
