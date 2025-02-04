@@ -81,32 +81,48 @@ def main():
     print("This is a password generator that generates four passwords per use and based on specifications.")
     user_up_low_choice = str(input("Do you want just uppercase letters, just lowercase letters, or both in your password? (type lower for lowercase, upper for uppercase, and both for both): "))
     user_up_low_choice = user_up_low_choice.lower()
-    if user_up_low_choice != "lower" or "upper" or "both":
+    if user_up_low_choice not in ["lower", "upper", "both"]:
         print("You need to select a choice for this please try again.")
         user_up_low_choice = str(input("Do you want just uppercase letters, just lowercase letters, or both in your password? (type lower for lowercase, upper for uppercase, and both for both): "))
-        if user_up_low_choice != "lower" or "upper" or "both":
+        user_up_low_choice = user_up_low_choice.lower()
+        if user_up_low_choice not in ["lower", "upper", "both"]:
             print("You really need to select a choice for this you will have letters in your password that is how this program works.")
             user_up_low_choice = str(input("Do you want just uppercase letters, just lowercase letters, or both in your password? (type lower for lowercase, upper for uppercase, and both for both): "))
+            if user_up_low_choice not in ["lower", "upper", "both"]:
+                print("You have not chosen any option defaulting to both.")
+                user_up_low_choice = "both"
     user_special_choice = str(input("Do you want special characters in your password? (just type yes or no): "))
-    if user_special_choice != "Yes" or "No":
+    user_special_choice = user_special_choice.lower()
+    if user_special_choice not in ["yes", "no"]:
         print("You need to select a choice for this please try again.")
         user_special_choice = str(input("Do you want special characters in your password? (just type yes or no): "))
+        user_special_choice = user_special_choice.lower()
+        if user_special_choice not in ["yes", "no"]:
+            print("You have not chosen an option defaulting to yes.")
+            user_special_choice = "yes"
     user_num_choice = str(input("Do you want numbers in your password? (just type yes or no): "))
-    if user_num_choice != "Yes" or "No":
+    if user_num_choice not in ["yes", "no"]:
         print("You need to select a choice for this please try again.")
         user_num_choice = str(input("Do you want numbers in your password? (just type yes or no): "))
-    user_password_length = int(input("How long do you want your password to be?: "))
-    if user_password_length != user_password_length.is_integer():
-        print("You need to select a choice for this please try again.")
-        user_password_length = int(input("How long do you want your password to be?: "))
-        if user_password_length != user_password_length.is_integer():
-            print("You really need to select a choice for this like just put a length already.")
-            user_password_length = int(input("How long do you want your password to be?: "))
+        if user_num_choice not in ["yes", "no"]:
+            print("You have not chosen an option defaulting to yes.")
+            user_num_choice = "yes"
+    user_password_length = input("How long do you want your password to be?: ")
+    if not user_password_length.isnumeric():
+        print("This needs to be a number please try again.")
+        user_password_length = input("How long do you want your password to be?: ")
+        if not user_password_length.isnumeric():
+            print("Are you trying to break my program? Please type in a number")
+            user_password_length = input("How long do you want your password to be?: ")
+            if not user_password_length.isnumeric():
+                print("Okay you don't get to choose anymore defaulting to password length 16.")
+                user_password_length = 16
+    user_password_length = int(user_password_length)
     user_password_one = password_assembler(user_password_length, user_special_choice, user_num_choice, user_up_low_choice)
     user_password_two = password_assembler(user_password_length, user_special_choice, user_num_choice, user_up_low_choice)
     user_password_three = password_assembler(user_password_length, user_special_choice, user_num_choice, user_up_low_choice)
     user_password_four = password_assembler(user_password_length, user_special_choice, user_num_choice, user_up_low_choice)
-    print(f"""Here is your passwords: 
+    print(f"""Here are your passwords: 
           password 1: {user_password_one}
           password 2: {user_password_two}
           password 3: {user_password_three}
