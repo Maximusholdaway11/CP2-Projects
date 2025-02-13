@@ -13,10 +13,6 @@ def get_movie_list(list_of_movies):
             list_of_movies.append(movie)
         return list_of_movies
 
-helpful_string = "e: Fantasy/Adventure, this is the rating PG-13."
-
-
-
 def print_entire_movie_list(list_of_movies):
     print("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
     print("")
