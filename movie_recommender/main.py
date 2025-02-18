@@ -36,25 +36,24 @@ def string_filters(list_of_filtered_movies, name, key):
 def integer_filters(list_of_filtered_movies, length_range):
     matches = []
     length_range = length_range.lower()
-    if length_range is "below an hour":
+    if length_range == "below an hour":
         for dict_ in list_of_filtered_movies:
-            if dict_['length'] < 60:
+            dict_length = dict_['length']
+            dict_length = int(dict_length)
+            if dict_length < 60:
                 matches.append(dict_)
-    elif length_range is "exactly an hour":
+    elif length_range == "exactly an hour":
         for dict_ in list_of_filtered_movies:
-            if dict_['length'] == 60:
+            dict_length = dict_['length']
+            dict_length = int(dict_length)
+            if dict_length == 60:
                 matches.append(dict_)
-    elif length_range is "above an hour":
+    elif length_range == "above an hour":
         for dict_ in list_of_filtered_movies:
-            if dict_['length'] > 60:
+            dict_length = dict_['length']
+            dict_length = int(dict_length)
+            if dict_length > 60:
                 matches.append(dict_)
     else:
         print("You did not select one of the three options.")
     return matches
-
-list_of_movies = get_movie_list()
-
-list_of_filtered_movies = get_movie_list()
-
-title_matches = string_filters(list_of_filtered_movies, "John", "directors")
-print(title_matches)
