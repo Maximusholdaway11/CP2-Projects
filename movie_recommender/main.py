@@ -2,10 +2,8 @@
 
 import csv
 
-list_of_movies = []
-list_of_filtered_movies = []
-
-def get_movie_list(list_of_movies):
+def get_movie_list():
+    list_of_movies = []
     with open("movie_recommender/Movies list.csv") as csv_file:
         next(csv_file)
         csv_file = csv.reader(csv_file)
@@ -24,17 +22,39 @@ def print_entire_movie_list(list_of_movies):
             print("")
             print("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
 
-def title_filter(list_of_filtered_movies, title):
-    title.split(" ")
+def string_filters(list_of_filtered_movies, name, key):
+    key = key.lower()
+    matches = []
+    if key not in ["title", "directors", "genre", "rating", "notable actors"]:
+        print(f"You can't search by {key}.")
+        return
+    for dict_ in list_of_filtered_movies:
+        if name in dict_[key]:
+            matches.append(dict_)
+    return matches
 
-    for dict in list_of_filtered_movies:
-        if dict['title'] in title:
-            list_of_filtered_movies.append(dict['title'])
-    return list_of_filtered_movies
+def integer_filters(list_of_filtered_movies, length_range):
+    matches = []
+    length_range = length_range.lower()
+    if length_range is "below an hour":
+        for dict_ in list_of_filtered_movies:
+            if dict_['length'] < 60:
+                matches.append(dict_)
+    elif length_range is "exactly an hour":
+        for dict_ in list_of_filtered_movies:
+            if dict_['length'] == 60:
+                matches.append(dict_)
+    elif length_range is "above an hour":
+        for dict_ in list_of_filtered_movies:
+            if dict_['length'] > 60:
+                matches.append(dict_)
+    else:
+        print("You did not select one of the three options.")
+    return matches
 
-list_of_movies = get_movie_list(list_of_movies)
+list_of_movies = get_movie_list()
 
-list_of_filtered_movies = get_movie_list(list_of_filtered_movies)
+list_of_filtered_movies = get_movie_list()
 
-list_of_filtered_movies = title_filter(list_of_filtered_movies, "Redemption")
-print(list_of_filtered_movies)
+title_matches = string_filters(list_of_filtered_movies, "John", "directors")
+print(title_matches)
