@@ -19,7 +19,7 @@ def print_entire_movie_list(list_of_movies):
     if list_of_movies is not []:
         for dict in list_of_movies:
             print("")
-            print(f"This is the title of the movie: {dict['title']}, this is the director of the movie: {dict['directors']} this is the genre: {dict['genre']}, this is the rating {dict['rating']}, this is how long the movie is (in minutes): {dict['length']}, these are the notable actors: {dict['actors']}.")
+            print(f"This is the title of the movie: {dict['title']}, this is the director of the movie: {dict['directors']} this is the genre: {dict['genre']}, this is the rating {dict['rating']}, this is how long the movie is (in minutes): {dict['length']}, These are the actors in the movie: {dict['actors']}.")
             print("")
             print("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
 
@@ -61,7 +61,6 @@ def integer_filters(list_of_filtered_movies, length_range):
 
 def main():
     list_of_movies = get_movie_list()
-    list_of_filtered_movies = get_movie_list()
     while True:
         print("""1. Print the entire movie list.
 2. Do the movies filters
@@ -73,14 +72,20 @@ def main():
                 print("Here is your list of movies:")
                 print_entire_movie_list(list_of_movies)
             elif user_decision == 2:
-                for x in range(1):
+                list_of_filtered_movies = get_movie_list()
+                for x in range(2):
                     user_filter_type = input("Please tell me what you want to filter by first (Title, Directors, Genre, Rating, Actors, Length): ")
                     if user_filter_type == "length":
                         user_length_type = input("Do you want to search for movies that are below an hour, exactly an hour, or above an hour long (don't include long just put something like |below an hour|): ")
-                        list_of_filtered_movies = integer_filters(list_of_filtered_movies, user_length_type)
+                        matches = integer_filters(list_of_filtered_movies, user_length_type)
                     else:
                         user_name_search = input("Please tell me the name of what you searching for: ")
-                        list_of_filtered_movies = string_filters(list_of_filtered_movies, user_name_search, user_filter_type)
+                        matches = string_filters(list_of_filtered_movies, user_name_search, user_filter_type)
+                print("Here is your filtered list")
+                print("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+                for dict_ in matches:
+                    print(f"This is the name of the movie: {dict_['title']}, These are the director(s): {dict_['directors']}, This is the movies genre: {dict_['genre']}, this is the rating {dict_['rating']}, This is how long the movie is: {dict_['length']}, These are the actors in the movie: {dict_['actors']}")
+                    print("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
             elif user_decision == 3:
                 print("Hope you found the movies you were looking for!")
                 break
