@@ -4,10 +4,9 @@ import csv
 
 to_do_list = []
 
+#Reading the file to get the saved to do list
 with open("to_do_list/TO_DO_LIST.txt", "r", newline='\n') as file:
     csv_txt_reader = csv.reader(file)
-    #empty_checker = file.read(1)
-    #print(empty_checker)
     for row in csv_txt_reader:
         if len(row) == 2:
             to_do_list.append({"task": row[0], "completed": row[1]})
@@ -15,6 +14,7 @@ with open("to_do_list/TO_DO_LIST.txt", "r", newline='\n') as file:
         else:
             pass
 
+#Adding a task to the to do list
 def add_a_task(to_do_list, task):
     for dict_ in to_do_list:
         if dict_["task"] == task:
@@ -24,6 +24,7 @@ def add_a_task(to_do_list, task):
     print(f"You have succesfully added the task {task}.")
     return to_do_list
 
+#Marking a task as done
 def mark_a_task(to_do_list, task):
     if to_do_list != []:
         for dict_ in to_do_list:
@@ -37,6 +38,7 @@ def mark_a_task(to_do_list, task):
         print("There is nothing to mark.")
     return to_do_list
 
+#Finding the task index for removing an item
 def find_task_index(to_do_list, task):
     dict_index = None
     for dict_ in to_do_list:
@@ -44,6 +46,7 @@ def find_task_index(to_do_list, task):
             dict_index = to_do_list.index(dict_)
     return dict_index
 
+#Removing a task from the to do list
 def remove_a_task(to_do_list, task):
     dict_index = find_task_index(to_do_list, task)
     if dict_index is not None:
@@ -53,6 +56,7 @@ def remove_a_task(to_do_list, task):
         print("That item could not be found.")
     return to_do_list
 
+#Display all the tasks
 def display_all_tasks(to_do_list):
     print(to_do_list)
     if to_do_list != []:
@@ -62,7 +66,8 @@ def display_all_tasks(to_do_list):
 and here is if its completed: {dict_["completed"]}""")
     else:
         print("There is nothing to show.")
-        
+
+#Saving the to do list to the file
 def save_to_file(to_do_list):
     with open("to_do_list/TO_DO_LIST.txt", "w+", newline = '\n') as file:
         csv_txt_writer = csv.writer(file)
@@ -76,6 +81,7 @@ def save_to_file(to_do_list):
         else:
             file.write("")
 
+#The main user interface
 def main(to_do_list):
     while True:
         user_input = input("""This is a to do list. Which option do you want to use? (type in a number to use)
