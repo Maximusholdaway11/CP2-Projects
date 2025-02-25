@@ -4,21 +4,24 @@ import csv
 
 to_do_list = []
 
-with open("to_do_list/TO_DO_LIST.txt", "r") as file:
+with open("to_do_list/TO_DO_LIST.txt", "r", newline='\n') as file:
     csv_txt_reader = csv.reader(file)
-    if csv_txt_reader != "Empty":
-        for row in csv_txt_reader:
+    #empty_checker = file.read(1)
+    #print(empty_checker)
+    for row in csv_txt_reader:
+        if len(row) == 2:
             to_do_list.append({"task": row[0], "completed": row[1]})
             print(to_do_list)
-    else:
-        pass
+        else:
+            pass
 
 def add_a_task(to_do_list, task):
-    if task not in to_do_list:
-        to_do_list.append({"task": task, "completed": "No"})
-        print(f"You have succesfully added the task {task}.")
-    else:
-        print("That task is already in there.")
+    for dict_ in to_do_list:
+        if dict_["task"] == task:
+            print("That task is already in there.")
+            return to_do_list
+    to_do_list.append({"task": task, "completed": "No"})
+    print(f"You have succesfully added the task {task}.")
     return to_do_list
 
 def mark_a_task(to_do_list, task):
@@ -35,7 +38,7 @@ def mark_a_task(to_do_list, task):
     return to_do_list
 
 def find_task_index(to_do_list, task):
-    dict_index = 0
+    dict_index = None
     for dict_ in to_do_list:
         if dict_["task"] == task:
             dict_index = to_do_list.index(dict_)
@@ -43,7 +46,11 @@ def find_task_index(to_do_list, task):
 
 def remove_a_task(to_do_list, task):
     dict_index = find_task_index(to_do_list, task)
-    to_do_list.pop(dict_index)
+    if dict_index is not None:
+        to_do_list.pop(dict_index)
+        print(f"You have successfully removed {task}.")
+    else:
+        print("That item could not be found.")
     return to_do_list
 
 def display_all_tasks(to_do_list):
@@ -57,24 +64,28 @@ and here is if its completed: {dict_["completed"]}""")
         print("There is nothing to show.")
         
 def save_to_file(to_do_list):
-    with open("to_do_list/TO_DO_LIST.txt", "a") as file:
+    with open("to_do_list/TO_DO_LIST.txt", "w+", newline = '\n') as file:
         csv_txt_writer = csv.writer(file)
+        csv_txt_reader = csv.reader(file)
         if to_do_list != []:
             for dict_ in to_do_list:
-                csv_txt_writer.writerow([f"{dict_["task"]}, {dict_["completed"]}"])
+                if dict_["task"] not in csv_txt_reader:
+                    csv_txt_writer.writerow(dict_.values())
+                else:
+                    pass
         else:
-            file.write("Empty")
+            file.write("")
 
 def main(to_do_list):
     while True:
-        user_input = input("""This is a to_do_list. Which option do you want to use? (press number keys)"
+        user_input = input("""This is a to do list. Which option do you want to use? (type in a number to use)
 1. Add a task
 2. Remove a task
 3. Mark a task as done
 4. Display all tasks
 5. Save the to do list
 6. Exit (will auto save)\n""")
-        
+
         if user_input.isnumeric():
             user_input = int(user_input)
 
