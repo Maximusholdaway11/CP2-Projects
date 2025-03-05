@@ -1,12 +1,18 @@
 #Ttitle
 import csv
 
+def save_characters(characters):
+    with open("battle_simulator/characters.csv", "w") as file:
+        file_csv_writer = csv.writer(file)
+        for character in characters:
+            file_csv_writer.writerow(character)
+
 def load_characters(characters):
-    with open("battle_simulator/characters.csv") as file:
+    with open("battle_simulator/characters.csv", "r") as file:
         file_csv_reader = csv.reader(file)
         for row in file_csv_reader:
             if row[0] != "":
-                characters.append(dict("name", row[0], "health", row[1], "strength", row[2], "defense", row[3], "speed", row[4]))
+                characters.append(dict("name", row[0], "health", row[1], "strength", row[2], "defense", row[3], "speed", row[4], "xp", row[5]))
 
 def display_character_info(user_char_input, characters):
     print("Here is your character information")
@@ -39,6 +45,6 @@ def character_creator(characters, type):
     user_char_speed = input("What is your characters speed?: ")
     user_char_speed = int_checker(user_char_speed, "speed")
     user_char_speed = int(user_char_speed)
-    user_character = {"name", user_char_name, "health", user_char_health, "strength", user_char_strength, "defense", user_char_defense, "speed", user_char_speed}
+    user_character = {"name": user_char_name, "health": user_char_health, "strength": user_char_strength, "defense": user_char_defense, "speed": user_char_speed, "xp": 0}
     characters.append(user_character)
     return characters
