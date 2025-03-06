@@ -1,0 +1,1 @@
+#Max Holdaway Battle Simulator: Character Creator function(s)

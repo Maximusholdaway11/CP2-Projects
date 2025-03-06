@@ -1,0 +1,1 @@
+#Max Holdaway Battle Simulator: Battling function(s)
