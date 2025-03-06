@@ -1,4 +1,4 @@
-#Title
+#Max Holdaway Battle Simulator: Battling function(s)
 def character_selection_view(characters):
     for character in characters:
         print(f"""{character["name"]}:
