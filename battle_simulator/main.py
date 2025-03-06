@@ -1,1 +1,1 @@
-#Title
+#Max Holdaway Battle Simulator: Main Function / User Interface

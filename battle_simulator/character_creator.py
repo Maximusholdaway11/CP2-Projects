@@ -1,4 +1,4 @@
-#Ttitle
+#Max Holdaway Battle Simulator: Character Creator function(s)
 import csv
 
 def save_characters(characters):
