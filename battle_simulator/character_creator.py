@@ -45,6 +45,6 @@ def character_creator(characters, type):
     user_char_speed = input("What is your characters speed?: ")
     user_char_speed = int_checker(user_char_speed, "speed")
     user_char_speed = int(user_char_speed)
-    user_character = {"name": user_char_name, "health": user_char_health, "strength": user_char_strength, "defense": user_char_defense, "speed": user_char_speed, "xp": 0}
+    user_character = {"name": user_char_name, "health": user_char_health, "strength": user_char_strength, "defense": user_char_defense, "speed": user_char_speed, "xp": 0, "maximum_health": user_char_health}
     characters.append(user_character)
     return characters
