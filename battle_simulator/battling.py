@@ -96,6 +96,13 @@ def battling(user_char_selection, user_com_selection, characters):
             if name == character["name"]:
                 selected_character = copy.deepcopy(character)
         return selected_character
+    def check_winner(player_character, com_character):
+        if player_character['health'] == 0:
+            return "Player Died"
+        elif com_character['health'] == 0:
+            return "Computer Died"
+        else:
+            return "No one has won"
     print(f"The battle has started its {user_char_selection} vs. {user_com_selection}.")
     user_character = character_selector(user_char_selection, characters)
     com_character = character_selector(user_com_selection, characters)
@@ -168,3 +175,7 @@ def battling(user_char_selection, user_com_selection, characters):
                     return characters
         else:
             continue
+        if battle_winner == "Player Beaten":
+            break
+        elif battle_winner == "Enemy Beaten":
+            break
