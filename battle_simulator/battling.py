@@ -175,7 +175,3 @@ def battling(user_char_selection, user_com_selection, characters):
                     return characters
         else:
             continue
-        if battle_winner == "Player Beaten":
-            break
-        elif battle_winner == "Enemy Beaten":
-            break
