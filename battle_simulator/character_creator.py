@@ -21,8 +21,8 @@ def display_character_info(user_char_input, characters):
         if dict_["name"] == user_char_input:
             print(f"{dict_["name"]}'s stats are Health: {dict_["health"]}, Strength: {dict_["strength"]}, Defense: {dict_["defense"]}, Speed: {dict_["speed"]}.")
 
-def character_creator(characters, type):
-    def int_checker(user_input):
+def character_creator(characters):
+    def int_checker(user_input, type):
         int_checker = False
         while int_checker == False:
             if user_input.isnumeric == True:

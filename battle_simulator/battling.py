@@ -1,25 +1,29 @@
 #Max Holdaway Battle Simulator: Battling function(s)
 import copy
 
-def character_selection_view(characters):
-    for character in characters:
-        print(f"""{character["name"]}:
-              Health: {character["health"]}
-              Strength: {character["strength"]}
-              Defense: {character["defense"]}
-              Speed: {character["speed"]}\n""")
+characters = [{'name': 'Bob'}, {'name': 'Apple'}, {'name': 'Banana'}]
 
-def select_character(characters):
-    character_selection_view(characters)
-    print("This is the character selector please choose your character.")
-    user_char_selection = input("Which character do you want to choose?: ")
-    return user_char_selection
+def select_characters(characters):
+    character_choices = []
+    for dict_ in characters:
+        character_choices.append(dict_["name"])
+    from InquirerPy import inquirer
+    from InquirerPy.base.control import Choice
+    from InquirerPy.separator import Separator
+    character_choices = inquirer.rawlist(
+        message="Pick your character first then the computers:",
+        choices=[
+            "Hello",
+            "Hi"
+        ],
+        default=3,
+        multiselect=True,
+        transformer=lambda result: ", ".join(result),
+        validate=lambda result: len(result) > 1,
+        invalid_message="You need to select at least two characters",
+    ).execute()
 
-def select_com_character(characters):
-    print("This is the computer character selection.")
-    character_selection_view(characters)
-    user_com_char_selection = input("Which character will the computer use?: ")
-    return user_com_char_selection
+select_characters(characters)
 
 def battling(user_char_selection, user_com_selection, characters):
     def get_winner():
