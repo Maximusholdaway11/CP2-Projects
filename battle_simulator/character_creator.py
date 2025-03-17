@@ -13,6 +13,7 @@ def load_characters(characters):
         for row in file_csv_reader:
             if row[0] != "":
                 characters.append(dict("name", row[0], "health", row[1], "strength", row[2], "defense", row[3], "speed", row[4], "xp", row[5]))
+        return characters
 
 def display_character_info(user_char_input, characters):
     print("Here is your character information")
