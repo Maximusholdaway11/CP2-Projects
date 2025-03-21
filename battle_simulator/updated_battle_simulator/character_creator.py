@@ -1,5 +1,11 @@
 #Max Holdaway Updated Battle Simulator: Character Creator function(s)
 import csv
+import matplotlib.pyplot as plt
+import numpy as np
+import copy
+from faker import Faker
+from InquirerPy import inquirer
+from InquirerPy.validator import NumberValidator
 
 #Function to save characters to csv file
 def save_characters(characters):
@@ -19,37 +25,52 @@ def load_characters(characters):
 
 #Function to display a characters information
 def display_character_info(user_char_input, characters):
-    print("Here is your character information")
-    for dict_ in characters:
-        if dict_["name"] == user_char_input:
-            print(f"{dict_["name"]}'s stats are Health: {dict_["health"]}, Strength: {dict_["strength"]}, Defense: {dict_["defense"]}, Speed: {dict_["speed"]}. Oh and {dict_['name']} also has {dict_['xp']} experience points.")
+    temp_character = ""
+    for character in characters:
+        if character['name'] == user_char_input:
+            temp_character = copy.deepcopy(character)
+    
+    if temp_character != "":
+        plt.style.use('_mpl-gallery')
+
+        x = ["Health", "Strength", "Defense", "Speed", "xp"]
+        y = [temp_character['health'], temp_character['strength'], temp_character['defense'], temp_character['speed'], temp_character['xp']]
+        graph_pos = [0.1, 0.1, 5, 5]
+        fig, ax = plt.subplots()
+        ax.bar(x, y, width=1, edgecolor="white", linewidth=0.7)
+        ax.set(ylim=(0, 100), yticks=np.arange(1, 101), ylabel="Stats", position=graph_pos)
+
+        plt.show()
+        return True
+    else:
+        print("Character not found please input a different character.")
+        return False
 
 #Function to create a character
 def character_creator(characters):
-    def int_checker(user_input, type):
-        int_checker = False
-        while int_checker == False:
-            if user_input.isnumeric() == True:
-                int_checker = True
-            else:
-                print("Please input a number")
-                user_input = input(f"What is your characters {type}?: ")
-        else:
-            return user_input
     print("This is a character creator.")
-    user_char_name = input("What is your characters name?: ")
-    user_char_health = input("What is your characters health?: ")
-    user_char_health = int_checker(user_char_health, "health")
-    user_char_health = int(user_char_health)
-    user_char_strength = input("What is your characters strength?: ")
-    user_char_strength = int_checker(user_char_strength, "strength")
-    user_char_strength = int(user_char_strength)
-    user_char_defense = input("What is your characters defense?: ")
-    user_char_defense = int_checker(user_char_defense, "defense")
-    user_char_defense = int(user_char_defense)
-    user_char_speed = input("What is your characters speed?: ")
-    user_char_speed = int_checker(user_char_speed, "speed")
-    user_char_speed = int(user_char_speed)
+    name_generator = Faker()
+    user_char_name = name_generator.name()
+    user_char_health = inquirer.text(
+        message="What is your characters health?: ",
+        validate1=NumberValidator(message="Please type in a number."),
+        validate2=lambda result: result <= 100,
+    ).execute()
+    user_char_strength = inquirer.text(
+        message="What is your characters strength?: ",
+        validate1=NumberValidator(message="Please type in a number."),
+        validate2=lambda result: result <= 100,
+    ).execute()
+    user_char_defense = inquirer.text(
+        message="What is your characters defense?: ",
+        validate1=NumberValidator(message="Please type in a number."),
+        validate2=lambda result: result <= 100,
+    ).execute()
+    user_char_speed = inquirer.text(
+        message="What is your characters speed?: ",
+        validate1=NumberValidator(message="Please type in a number."),
+        validate2=lambda result: result <= 100,
+    ).execute()
     user_character = {"name": user_char_name, "health": user_char_health, "strength": user_char_strength, "defense": user_char_defense, "speed": user_char_speed, "xp": 0}
     characters.append(user_character)
     return characters
