@@ -15,6 +15,7 @@ def load_characters_into_data_frame(characters):
     else:
         return ""
 
+#The function to show the charater min max mean and medians as well as a prompt if they want to see a graph of them.
 def characters_min_max_median_mean(character_data_frame):
     min_frame = character_data_frame[['health', 'strength', 'defense', 'speed']].min()
     max_frame = character_data_frame[['health', 'strength', 'defense', 'speed']].max()
