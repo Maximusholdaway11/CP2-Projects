@@ -48,29 +48,25 @@ def display_character_info_bar_graph(user_char_input, characters):
 
 #Function to create a character
 def character_creator(characters):
+    def get_stat(type):
+        while True:
+            type_num = inquirer.text(
+            message=f"What is your characters {type}? (please have it be below 100): ",
+            validate =NumberValidator(message="Please type in a number."),
+            ).execute()
+            type_num = int(type_num)
+            if type_num > 100:
+                print("Please select a stat below 100")
+                continue
+            elif type_num <= 100:
+                return type_num
     print("This is a character creator.")
     word_generator = Faker()
     user_char_name = word_generator.name()
-    user_char_health = inquirer.text(
-        message="What is your characters health? (cannot be over 100): ",
-        validate1=NumberValidator(message="Please type in a number."),
-        validate2=lambda result: result <= 100,
-    ).execute()
-    user_char_strength = inquirer.text(
-        message="What is your characters strength? (cannot be over 100): ",
-        validate1=NumberValidator(message="Please type in a number."),
-        validate2=lambda result: result <= 100,
-    ).execute()
-    user_char_defense = inquirer.text(
-        message="What is your characters defense? (cannot be over 100): ",
-        validate1=NumberValidator(message="Please type in a number."),
-        validate2=lambda result: result <= 100,
-    ).execute()
-    user_char_speed = inquirer.text(
-        message="What is your characters speed? (cannot be over 100): ",
-        validate1=NumberValidator(message="Please type in a number."),
-        validate2=lambda result: result <= 100,
-    ).execute()
+    user_char_health = get_stat('health')
+    user_char_strength = get_stat('strength')
+    user_char_defense = get_stat('defense')
+    user_char_speed = get_stat('speed')
     character_backstory = word_generator.text()
     character_address = word_generator.address()
     user_character = {"name": user_char_name, "health": user_char_health, "strength": user_char_strength, "defense": user_char_defense, "speed": user_char_speed, "xp": 0, "backstory": character_backstory, "address": character_address}
