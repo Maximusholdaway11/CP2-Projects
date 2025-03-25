@@ -37,10 +37,13 @@ def main():
                 if user_input == "Create a character":
                     character_list = char_functions.character_creator(character_list)
                 elif user_input == "Display a characters information":
-                    character_has_been_shown = False
-                    while character_has_been_shown == False:
-                        user_char_choice = input("What is the name of the character you want to view?: ")
-                        character_has_been_shown = char_functions.display_character_info_bar_graph(user_char_choice, character_list)
+                    if character_list != []:
+                        character_has_been_shown = False
+                        while character_has_been_shown == False:
+                            user_char_choice = input("What is the name of the character you want to view?: ")
+                            character_has_been_shown = char_functions.display_character_info(user_char_choice, character_list)
+                    else:
+                        print("You have no characters to use please create a character first before using this.")
                 elif user_input == "Exit (the character manager)":
                     print("Exited Character manangement.")
                     break
