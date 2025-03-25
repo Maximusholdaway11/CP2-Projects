@@ -10,7 +10,7 @@ from InquirerPy.separator import Separator
 
 #Function to select the character the user will use
 def select_user_character(characters):
-    if characters != []:
+    if characters != [] and len(characters) >= 2:
         character_choice = inquirer.select(
             message="Pick your character:",
             choices=[char.get('name') for char in characters],
@@ -25,7 +25,7 @@ def select_user_character(characters):
 
 #Function to select the character the computer will use
 def select_com_character(characters, user_character_choice):
-    if characters != []:
+    if characters != [] and len(characters) >= 2:
         while True:
             character_choice = inquirer.select(
                 message="Pick the Computers character:",
