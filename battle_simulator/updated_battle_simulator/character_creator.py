@@ -6,7 +6,6 @@ import copy
 from faker import Faker
 from InquirerPy import inquirer
 from InquirerPy.validator import NumberValidator
-import trace
 
 #Function to save characters to csv file
 def save_characters(characters):
@@ -32,11 +31,7 @@ def display_character_info_bar_graph(characters):
                 message="What is the name of the character you want to view?:",
                 choices=[char.get('name') for char in characters],
             ).execute()
-            character = ""
-            for char in characters:
-                if character_choice == char['name']:
-                    character = copy.deepcopy(char)
-            return character
+            return character_choice
         else:
             return ""
     user_char_input = select_character(characters)

@@ -21,7 +21,7 @@ def main():
                 "Character Management",
                 "Battle Simulator",
                 "Stat Statistics",
-                "Exit (will auto save all current characters)"
+                "Exit (will save all current characters)"
             ],
         ).execute()
         if user_input == "Character Management":
