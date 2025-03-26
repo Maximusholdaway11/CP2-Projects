@@ -30,7 +30,8 @@ def main():
                 message="What do you want to do?:",
                 choices=[
                     "Create a character",
-                    "Display a characters information",
+                    "Display a characters stats",
+                    "Display a characters backstory and address",
                     "Exit (the character manager)"
                 ],
             ).execute()
@@ -44,6 +45,8 @@ def main():
                             character_has_been_shown = char_functions.display_character_info_bar_graph(character_list)
                     else:
                         print("You have no characters to use please create a character first before using this.")
+                elif user_input == "Display a characters backstory and address":
+                    char_functions.show_address_and_backstory(character_list)
                 elif user_input == "Exit (the character manager)":
                     print("Exited Character manangement.")
                     break
