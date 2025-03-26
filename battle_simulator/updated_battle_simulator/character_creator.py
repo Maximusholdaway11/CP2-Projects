@@ -20,10 +20,10 @@ def load_characters(characters):
         file_csv_reader = csv.reader(file)
         for row in file_csv_reader:
             if row != []:
-                characters.append({"name": row[0], "health": int(row[1]), "strength": int(row[2]), "defense": int(row[3]), "speed": int(row[4]), "xp": int(row[5])})
+                characters.append({"name": row[0], "health": int(row[1]), "strength": int(row[2]), "defense": int(row[3]), "speed": int(row[4]), "xp": int(row[5]), "backstory": row[6], "address": row[7]})
         return characters
 
-#Function to display a characters information
+#Function to display a characters stats as a graph
 def display_character_info_bar_graph(characters):
     def select_character(characters):
         if characters != []:
@@ -56,17 +56,46 @@ def display_character_info_bar_graph(characters):
         print("Character not found please input a different character.")
         return False
 
+#Function to show a characters backstory and address
+def show_address_and_backstory(characters):
+    def select_character_name(characters):
+        if characters != []:
+            character_choice = inquirer.select(
+                message="What is the name of the character you want to view?:",
+                choices=[char.get('name') for char in characters],
+            ).execute()
+            return character_choice
+        else:
+            return ""
+    def select_character(characters, char_name):
+        if char_name != "":
+            for char in characters:
+                if char['name'] == char_name:
+                    character = copy.deepcopy(char)
+                    return character
+        else:
+            return ""
+    char_selection_name = select_character_name(characters)
+    char_selection = select_character(characters, char_selection_name)
+    print(char_selection)
+    if char_selection != "":
+        print(f"Here is your characters backstory:\n{char_selection['backstory']}.")
+        print(f"Here is your characters address:\n{char_selection['address']}.")
+    else:
+        print("No characters are created please create a character.")
+        
+
 #Function to create a character
 def character_creator(characters):
     def get_stat(type):
         while True:
             type_num = inquirer.text(
-            message=f"What is your characters {type}? (please have it be below 100): ",
+            message=f"What is your characters {type}? (please have it be below 100 and above 0): ",
             validate =NumberValidator(message="Please type in a number."),
             ).execute()
             type_num = int(type_num)
-            if type_num > 100:
-                print("Please select a stat below 100")
+            if type_num > 100 or type_num == 0:
+                print("Please select a stat below 100 and above 0")
                 continue
             elif type_num <= 100:
                 return type_num
