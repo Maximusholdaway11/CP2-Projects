@@ -31,3 +31,27 @@ This is a battle simulator with many features that allow you to manipulate chara
 ---
 + Character Creator
 + Character Stat visualizations with graphs
++ Battle Simulator where two characters will fight
++ A calculation of the mins, maxs, means, and medians of all the current characters you have created (with a prompt that asks if you want to see a graph of them.)  
+
+## Contributing
+---
+  
+## Contributers
+---
+
++ A parent - Helped learn some of the libraries
++ Myself - Did practically all the coding  
+
+## Authors Info
+---
+
++ Email: max.holdaway@ucas-edu.net
++ Description/Info:
+I am a simple Computer Programming 2 Student (CS1500). I am still learning how to code but I am improving. I hope to improve even more and eventually use this in engineering.  
+
+## Changelog
+---
+  
+## Liscense
+---
