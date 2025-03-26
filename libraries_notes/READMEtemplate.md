@@ -15,10 +15,10 @@ This is where my paragraph decribing the project belongs
 Short paragaph here maybe a bulleted list
 
 + list item one
-+ ist item two
++ list item two
 + list item three
 
-![image](relative link to your image of the project working NOTE: image must be save in the repository)  
+![image](relative link to your image of the project working NOTE: image must be saved in the repository)  
 
 ## Used Technologies
 ---

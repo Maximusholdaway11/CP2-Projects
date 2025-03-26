@@ -3,7 +3,7 @@
 #Importing all the functions from my other pages
 import battling as battle_functions
 import character_creator as char_functions
-import character_data_frames
+import character_data_frames as data_frame_functions
 
 #This is the InquirerPy library and it has been used to create all of the custom user interfaces you may see. You may need to use (pip3 install InquirerPy) to use my program if it does not work copy this website link "https://inquirerpy.readthedocs.io/en/latest/"
 from InquirerPy import inquirer
@@ -21,7 +21,7 @@ def main():
                 "Character Management",
                 "Battle Simulator",
                 "Stat Statistics",
-                "Exit (will auto save all current characters)"
+                "Exit (will save all current characters)"
             ],
         ).execute()
         if user_input == "Character Management":
@@ -36,12 +36,12 @@ def main():
             ).execute()
                 if user_input == "Create a character":
                     character_list = char_functions.character_creator(character_list)
+                    char_functions.save_characters(character_list)
                 elif user_input == "Display a characters information":
                     if character_list != []:
                         character_has_been_shown = False
                         while character_has_been_shown == False:
-                            user_char_choice = input("What is the name of the character you want to view?: ")
-                            character_has_been_shown = char_functions.display_character_info(user_char_choice, character_list)
+                            character_has_been_shown = char_functions.display_character_info_bar_graph(character_list)
                     else:
                         print("You have no characters to use please create a character first before using this.")
                 elif user_input == "Exit (the character manager)":
@@ -49,13 +49,14 @@ def main():
                     break
         elif user_input == "Battle Simulator":
             battle_functions.battling(character_list)
+            char_functions.save_characters(character_list)
         elif user_input == "Stat Statistics":
-            character_list_data_frame = character_data_frames.load_characters_into_data_frame(character_list)
+            character_list_data_frame = data_frame_functions.load_characters_into_data_frame(character_list)
             if len(character_list_data_frame) > 0:
-                character_data_frames.characters_min_max_median_mean(character_list_data_frame)
+                data_frame_functions.characters_min_max_median_mean(character_list_data_frame)
             else:
                 print("No characters are created please add characters before doing this.")
-        elif user_input == "Exit (will auto save all current characters)":
+        elif user_input == "Exit (will save all current characters)":
             print("Hope this battle simulator was fun goodybye!")
             char_functions.save_characters(character_list)
             break
