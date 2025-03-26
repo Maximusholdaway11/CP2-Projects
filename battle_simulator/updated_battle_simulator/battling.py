@@ -121,7 +121,11 @@ def battling(characters):
         battle_winner = get_winner()
         return battle_winner
     user_character = select_user_character(characters)
-    com_character = select_com_character(characters, user_character['name'])
+    if user_character != "":
+        com_character = select_com_character(characters, user_character['name'])
+    else:
+        print("There are no characters for you to select please create at least two characters to use this.")
+        return ""
     if user_character != "" and com_character != "":
         print(f"The battle has started its {user_character['name']} vs. {com_character['name']}.")
         while True:
