@@ -20,12 +20,14 @@ This is a battle simulator with many features that allow you to manipulate chara
 ## Used Technologies
 ---
 
-+ InquirerPy - Used for the custom user inputs that you will see.
-`pip3 install InquirerPy` note: You need a python version of at least 3.7 or above to use this.
++ InquirerPy - Used for the custom user inputs that you will see. note: You need a python version of at least 3.7 or above to use this.
+`pip3 install InquirerPy`
++ Pandas - Used for calculating the min, max, mean, and median of all the characters stats. note: This only officially supports python 3.9, 3.10, 3.11, and 3.12.
+`pip install pandas`
 + Matplotlib - Used for creating all the graphs for the stats and/or min, max, mean, and median values.
 `pip install matplotlib`
-+ Faker - Used for generating the random character name as well as the character backstories and addresses.
-`pip install Faker` note: You need a python version of at least 3.8 or above to use the latest version of this.  
++ Faker - Used for generating the random character name as well as the character backstories and addresses. note: You need a python version of at least 3.8 or above to use the latest version of this.
+`pip install Faker`  
 
 ## Current Features
 ---
