@@ -39,7 +39,7 @@ def display_character_info_bar_graph(characters):
     for character in characters:
         if character['name'] == user_char_input:
             temp_character = copy.deepcopy(character)
-    
+    #If the character is actually a character show the user the graph
     if temp_character != "":
         plt.style.use('_mpl-gallery')
 
@@ -58,6 +58,7 @@ def display_character_info_bar_graph(characters):
 
 #Function to show a characters backstory and address
 def show_address_and_backstory(characters):
+    #Getting the name of the character wanting to be selected
     def select_character_name(characters):
         if characters != []:
             character_choice = inquirer.select(
@@ -67,6 +68,7 @@ def show_address_and_backstory(characters):
             return character_choice
         else:
             return ""
+    #Using that name to actually select said character
     def select_character(characters, char_name):
         if char_name != "":
             for char in characters:
@@ -78,6 +80,7 @@ def show_address_and_backstory(characters):
     char_selection_name = select_character_name(characters)
     char_selection = select_character(characters, char_selection_name)
     print(char_selection)
+    #Showing the backstory and address of the character if the character is actually a character
     if char_selection != "":
         print(f"Here is your characters backstory:\n{char_selection['backstory']}.")
         print(f"Here is your characters address:\n{char_selection['address']}.")
