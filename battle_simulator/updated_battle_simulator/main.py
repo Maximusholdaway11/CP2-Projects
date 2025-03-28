@@ -15,6 +15,7 @@ def main():
     character_list = []
     character_list = char_functions.load_characters(character_list)
     while True:
+        #Using inquirerpy to get the users input
         user_input = inquirer.select(
             message="What do you want to do?:",
             choices=[
@@ -26,11 +27,12 @@ def main():
         ).execute()
         if user_input == "Character Management":
             while True:
+                #Using inquirerpy to get the users input for character managment
                 user_input = inquirer.select(
                 message="What do you want to do?:",
                 choices=[
                     "Create a character",
-                    "Display a characters stats",
+                    "Display a characters information",
                     "Display a characters backstory and address",
                     "Exit (the character manager)"
                 ],
@@ -39,6 +41,7 @@ def main():
                     character_list = char_functions.character_creator(character_list)
                     char_functions.save_characters(character_list)
                 elif user_input == "Display a characters information":
+                    #Checking if the character list is not empty and letting the user through if it is not
                     if character_list != []:
                         character_has_been_shown = False
                         while character_has_been_shown == False:
@@ -51,6 +54,7 @@ def main():
                     print("Exited Character manangement.")
                     break
         elif user_input == "Battle Simulator":
+            #Battling and then saving the characters after finishing battling
             battle_functions.battling(character_list)
             char_functions.save_characters(character_list)
         elif user_input == "Stat Statistics":

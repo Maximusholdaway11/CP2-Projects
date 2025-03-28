@@ -25,6 +25,7 @@ def select_user_character(characters):
 
 #Function to select the character the computer will use
 def select_com_character(characters, user_character_choice):
+    #Making sure there is at least two characters created
     if characters != [] and len(characters) >= 2:
         while True:
             character_choice = inquirer.select(
