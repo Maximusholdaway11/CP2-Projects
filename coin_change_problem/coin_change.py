@@ -1,5 +1,8 @@
 #Max Holdaway Coin Change Problem: Coin Change function(s)
 import csv
+from InquirerPy import inquirer
+from InquirerPy.base.control import Choice
+from InquirerPy.separator import Separator
 
 def load_coin_values(coin_value_list):
     with open("coin_change_problem/coin_values.csv", "r") as file:
@@ -58,14 +61,32 @@ def load_coin_values(coin_value_list):
                 coin_value_list.append(br_coin_values_dict)
             elif row[0] =='JP':
                 one_yen_split = row[1].split('-')
-                one_yen_value = {'coin_name': 'Penny', 'coin_value': float(penny_split[1])}
+                one_yen_value = {'coin_name': 'One Yen', 'coin_value': float(one_yen_split[1])}
                 five_yen_split = row[2].split('-')
-                five_yen_value = {'coin_name': 'Nickel', 'coin_value': float(nickel_split[1])}
+                five_yen_value = {'coin_name': 'Five Yen', 'coin_value': float(five_yen_split[1])}
                 ten_yen_split = row[3].split('-')
-                ten_yen_value = {'coin_name': 'Dime', 'coin_value': float(dime_split[1])}
+                ten_yen_value = {'coin_name': 'Ten Yen', 'coin_value': float(ten_yen_split[1])}
                 fifty_yen_split = row[4].split('-')
-                fifty_yen_value ={'coin_name': 'Quarter', 'coin_value': float(quarter_split[1])}
+                fifty_yen_value ={'coin_name': 'Fifty Yen', 'coin_value': float(fifty_yen_split[1])}
                 hundred_yen_split = row[5].split('-')
-                hundred_yen_value = {'coin_name': 'Dollar Coin', 'coin_value': float(dollar_split[1])}
-                jp_coin_values_dict = {'penny': penny_value, 'nickel': nickel_value, 'dime': dime_value, 'quarter': quarter_value, 'dollar_coin': dollar_value}
+                hundred_yen_value = {'coin_name': 'One Hundred Yen', 'coin_value': float(hundred_yen_split[1])}
+                five_hundred_yen_split = row[6].split('-')
+                five_hundred_yen_value = {'coin_name': 'Five Hundred Yen', 'coin_value': float(five_hundred_yen_split[1])}
+                jp_coin_values_dict = {'one_yen': one_yen_value, 'five_yen': five_yen_value, 'ten_yen': ten_yen_value, 'fifty_yen': fifty_yen_value, 'hundred_yen': hundred_yen_value, 'five_hundred_yen': five_hundred_yen_value}
                 coin_value_list.append(jp_coin_values_dict)
+            elif row[0] == 'CH':
+                one_fen_split = row[1].split('-')
+                one_fen_value = {'coin_name': 'One Fen', 'coin_value': float(one_fen_split[1])}
+                five_fen_split = row[2].split('-')
+                five_fen_value = {'coin_name': 'Five Yen', 'coin_value': float(five_fen_split[1])}
+                one_jiao_split = row[3].split('-')
+                one_jiao_value = {'coin_name': 'Ten Yen', 'coin_value': float(one_jiao_split[1])}
+                two_jiao_split = row[4].split('-')
+                two_jiao_value ={'coin_name': 'Fifty Yen', 'coin_value': float(two_jiao_split[1])}
+                five_jiao_split = row[5].split('-')
+                five_jiao_value = {'coin_name': 'One Hundred Yen', 'coin_value': float(five_jiao_split[1])}
+                one_yuan_split = row[6].split('-')
+                one_yuan_value = {'coin_name': 'Five Hundred Yen', 'coin_value': float(one_yuan_split[1])}
+                ch_coin_values_dict = {'one_fen': one_fen_value, 'five_fen': five_fen_value, 'one_jiao': one_jiao_value, 'two_jiao': two_jiao_value, 'five_jiao': five_jiao_value, 'one_yuan': one_yuan_value}
+                coin_value_list.append(ch_coin_values_dict)
+        return coin_value_list
