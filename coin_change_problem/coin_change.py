@@ -105,27 +105,27 @@ def count_coins(coin_value_list):
         for country_value_dict in coin_value_list:
             if country_value_dict['country'] == 'US':
                 US_dict = copy.deepcopy(country_value_dict)
-                coin_type = 'Pennys'
+                coin_type = 'Dollars'
         dollar_coin_amount = 0
         quarter_amount = 0
         dime_amount = 0
         nickel_amount = 0
         penny_amount = 0
-        user_amount = (get_coin_amount(coin_type))
+        user_amount = float(get_coin_amount(coin_type))
         while user_amount > 0 and user_amount != 0:
-            if user_amount >= 100:
+            if user_amount >= 1:
                 user_amount -= US_dict['dollar_coin']
                 dollar_coin_amount += 1
-            elif user_amount <= 99 and user_amount >= 25:
+            elif user_amount <= .99 and user_amount >= .25:
                 user_amount -= US_dict['quarter']
                 quarter_amount += 1
-            elif user_amount <= 24 and user_amount >= 10:
+            elif user_amount <= .24 and user_amount >= .10:
                 user_amount -= US_dict['dime']
                 dime_amount += 1
-            elif user_amount <= 9 and user_amount >= 5:
+            elif user_amount <= .09 and user_amount >= .05:
                 user_amount -= US_dict['nickel']
                 nickel_amount += 1
-            elif user_amount <= 4:
+            elif user_amount <= .04:
                 user_amount -= US_dict['penny']
                 penny_amount += 1
         print(f'From your total amount {user_amount} there was:')
@@ -135,4 +135,50 @@ def count_coins(coin_value_list):
         print(f'{nickel_amount} this many nickels.')
         print(f'{penny_amount} this many pennys.')
     elif user_country == 'Europe':
-        pass
+        for country_value_dict in coin_value_list:
+            if country_value_dict['country'] == 'EU':
+                EU_dict = copy.deepcopy(country_value_dict)
+                coin_type = 'Euros'
+        two_euro_amount = 0
+        one_euro_amount = 0
+        fifty_euro_cent_amount = 0
+        twenty_euro_cent_amount = 0
+        ten_euro_cent_amount = 0
+        five_euro_cent_amount = 0
+        two_euro_cent_amount = 0
+        one_euro_cent_amount = 0
+        user_amount = float(get_coin_amount(coin_type))
+        while user_amount > 0 and user_amount != 0:
+            if user_amount >= 2:
+                user_amount -= EU_dict['two_euros']
+                two_euro_amount += 1
+            elif user_amount <= 1.99 and user_amount >= 1:
+                user_amount -= EU_dict['one_euros']
+                one_euro_amount
+            elif user_amount <= .99 and user_amount >= .50:
+                user_amount -= EU_dict['fifty_euro_cent']
+                fifty_euro_cent_amount += 1
+            elif user_amount <= .49 and user_amount >= .20:
+                user_amount -= EU_dict['twenty_euro_cent']
+                twenty_euro_cent_amount += 1
+            elif user_amount <= .19 and user_amount >= .10:
+                user_amount -= EU_dict['ten_euro_cent']
+                ten_euro_cent_amount += 1
+            elif user_amount <= .09 and user_amount >= .05:
+                user_amount -= EU_dict['five_euro_cent']
+                five_euro_cent_amount += 1
+            elif user_amount <= .04 and user_amount >= .02:
+                user_amount -= EU_dict['two_euro_cent']
+                two_euro_cent_amount += 1
+            elif user_amount < .02:
+                user_amount -= EU_dict['one_euro_cent']
+                one_euro_cent_amount += 1
+        print(f'From your total amount {user_amount} there was:')
+        print(f'{two_euro_amount} this many two euro coins.')
+        print(f'{one_euro_amount} this many one euro coins.')
+        print(f'{fifty_euro_cent_amount} this many fifty euro cent coins.')
+        print(f'{twenty_euro_cent_amount} this many twenty euro cent coins.')
+        print(f'{ten_euro_cent_amount} this many ten euro cent coins.')
+        print(f'{five_euro_cent_amount} this many five euro cent coins.')
+        print(f'{two_euro_cent_amount} this many two euro cent coins.')
+        print(f'{one_euro_cent_amount} this many one euro cent coins.')
