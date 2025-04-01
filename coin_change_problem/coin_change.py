@@ -124,7 +124,6 @@ def count_coins(coin_value_list):
         nickel_amount = 0
         penny_amount = 0
         user_amount = round(get_coin_amount(coin_type), 2)
-        print(user_amount)
         #A while loop to find all the coins inside the specific amount of a currency (varying by country but this system is used for all of them)
         while user_amount > 0:
             user_amount = round(user_amount, 2)
