@@ -1,4 +1,5 @@
 #Max Holdaway Coin Change Problem: Coin Loading function(S)
+import csv
 
 #Function to load all the coin values from the coin values csv file
 def load_coin_values(coin_value_list):

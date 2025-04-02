@@ -1,5 +1,4 @@
 #Max Holdaway Coin Change Problem: Coin Change function(s)
-import csv
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
 from InquirerPy.separator import Separator
