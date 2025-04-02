@@ -14,17 +14,19 @@ def count_coins(coin_value_list):
         while True:
             amount = str(inquirer.text(message=f'How many {coin_type} do you have? (will get auto rounded to two decimals):').execute())
             if amount.isnumeric():
-                if amount >= 0:
-                    return int(amount)
+                amount = int(amount)
+                if amount >= 0 and amount != 0:
+                    return amount
                 else:
-                    print("No negative numbers those don't work with coins.")
+                    print("No negative numbers those don't work with coins. And if you put zero that also doesn't work with coins.")
             else:
                 try:
-                    if amount >= 0:
-                        return float(amount)
+                    amount = float(amount)
+                    if amount >= 0 and amount != 0:
+                        return amount
                     else:
-                        print("No negative numbers those don't work with coins.")
-                except ValueError:
+                        print("No negative numbers those don't work with coins. And if you put zero that also doesn't work with coins.")
+                except:
                     print("Please type in a number (you can include decimals).")
     user_country = get_country()
     if user_country == 'United States':
@@ -220,7 +222,6 @@ def count_coins(coin_value_list):
         one_yuan_amount = 0
         user_amount = float(get_coin_amount(coin_type))
         total_amount = copy.copy(user_amount)
-        #A while loop to find all the coins inside the specifc amount of yuans
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 2)
             if user_amount >= 1:
