@@ -20,23 +20,19 @@ This is Coin Change Problem solver which turns all amounts of any type of dollar
 ---
 
 + InquirerPy - Used for the custom user inputs that you will see. note: You need a python version of at least 3.7 or above to use this.
-`pip3 install InquirerPy`
-  
+`pip3 install InquirerPy`  
 
 ## Current Features
 ---
-+ Character Creator
-+ Character Stat visualizations with graphs
-+ Battle Simulator where two characters will fight
-+ A calculation of the mins, maxs, means, and medians of all the current characters you have created (with a prompt that asks if you want to see a graph of them.)  
++ A coin change problem solver that calculates the amount of coins of a currency inside the "dollar" amount of that currency.  
 
 ## Contributing
 ---
-  
+
 ## Contributers
 ---
 
-+ A parent - Helped learn some of the libraries
++ A parent - Helped test my code and assist in debugging
 + Myself - Did practically all the coding  
 
 ## Authors Info
