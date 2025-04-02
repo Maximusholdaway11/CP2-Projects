@@ -13,8 +13,7 @@ This is Coin Change Problem solver which turns all amounts of any type of dollar
 ---
 
 + To run the program run the file named 'main'
-+ To use any features other than create a character you first need to use the create a character feature.
-+ The program will auto save all characters after every use of the character creator, battle sim, and will also save when you exit.
++ This coin change problem solver only has compatibility with 5 different currency's.
 + That is all hope you will enjoy using this!  
 
 ## Used Technologies
@@ -22,12 +21,7 @@ This is Coin Change Problem solver which turns all amounts of any type of dollar
 
 + InquirerPy - Used for the custom user inputs that you will see. note: You need a python version of at least 3.7 or above to use this.
 `pip3 install InquirerPy`
-+ Pandas - Used for calculating the min, max, mean, and median of all the characters stats. note: This only officially supports python 3.9, 3.10, 3.11, and 3.12.
-`pip install pandas`
-+ Matplotlib - Used for creating all the graphs for the stats and/or min, max, mean, and median values.
-`pip install matplotlib`
-+ Faker - Used for generating the random character name as well as the character backstories and addresses. note: You need a python version of at least 3.8 or above to use the latest version of this.
-`pip install Faker`  
+  
 
 ## Current Features
 ---
