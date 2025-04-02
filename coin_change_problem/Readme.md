@@ -2,7 +2,7 @@
 
 ## Project Description
 ---
-This is Coin Change Problem solver which turns all amounts of any type of dollar and such into the amount of coins it would be.
+This is the Coin Change Problem solver which turns all amounts of any type of dollar and such into the amount of coins it would be.
 
 ## Installation
 ---
