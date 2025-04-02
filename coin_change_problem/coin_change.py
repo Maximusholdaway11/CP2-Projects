@@ -8,9 +8,11 @@ import copy
 
 #This counts the amount of coins (varying by country) inside a specifc value
 def count_coins(coin_value_list):
+    #Little inner function that is a user input for the specific country
     def get_country():
         country = inquirer.select(message='Which currency are you counting coins for?:', choices=['United States', 'Europe', 'Britain', 'Japan', 'China']).execute()
         return country
+    #Inner function that gets the amount of money to coin change also servers as my user input validiation and edge testing
     def get_coin_amount(coin_type):
         while True:
             amount = str(inquirer.text(message=f'How many {coin_type} do you have? (will get auto rounded to two decimals):').execute())
