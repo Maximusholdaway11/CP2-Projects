@@ -106,10 +106,16 @@ def count_coins(coin_value_list):
         while True:
             amount = str(inquirer.text(message=f'How many {coin_type} do you have? (will get auto rounded to two decimals):').execute())
             if amount.isnumeric():
-                return int(amount)
+                if amount >= 0:
+                    return int(amount)
+                else:
+                    print("No negative numbers those don't work with coins.")
             else:
                 try:
-                    return float(amount)
+                    if amount >= 0:
+                        return float(amount)
+                    else:
+                        print("No negative numbers those don't work with coins.")
                 except ValueError:
                     print("Please type in a number (you can include decimals).")
     user_country = get_country()
@@ -124,6 +130,7 @@ def count_coins(coin_value_list):
         nickel_amount = 0
         penny_amount = 0
         user_amount = round(get_coin_amount(coin_type), 2)
+        total_amount = copy.copy(user_amount)
         #A while loop to find all the coins inside the specific amount of a currency (varying by country but this system is used for all of them)
         while user_amount > 0:
             user_amount = round(user_amount, 2)
@@ -142,7 +149,7 @@ def count_coins(coin_value_list):
             elif user_amount >= 0.01:
                 user_amount -= US_dict['penny']['coin_value']
                 penny_amount += 1
-        print(f'From your total amount {user_amount} there was:')
+        print(f'From your total amount {total_amount} there was:')
         print(f'This many dollar coins: {dollar_coin_amount}')
         print(f'This many quarters: {quarter_amount}')
         print(f'This many dimes: {dime_amount}')
@@ -161,7 +168,8 @@ def count_coins(coin_value_list):
         five_euro_cent_amount = 0
         two_euro_cent_amount = 0
         one_euro_cent_amount = 0
-        user_amount = float(get_coin_amount(coin_type))
+        user_amount = round(get_coin_amount(coin_type))
+        total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 2)
             if user_amount >= 2:
@@ -188,14 +196,14 @@ def count_coins(coin_value_list):
             elif user_amount < .02  and user_amount != 0:
                 user_amount -= EU_dict['one_euro_cent']['coin_value']
                 one_euro_cent_amount += 1
-        print(f'From your total amount {user_amount} there was:')
+        print(f'From your total amount {total_amount} there was:')
         print(f'This many two euro coins: {two_euro_amount}')
         print(f'This many one euro coins: {one_euro_amount}')
         print(f'This many fifty euro cent coins: {fifty_euro_cent_amount}')
         print(f'This many twenty euro cent coins: {twenty_euro_cent_amount}')
         print(f'This many ten euro cent coins: {ten_euro_cent_amount}')
         print(f'This many five euro cent coins: {five_euro_cent_amount}')
-        print(f'This many two euro cent coins: {two_euro_amount}')
+        print(f'This many two euro cent coins: {two_euro_cent_amount}')
         print(f'This many one euro cent coins: {one_euro_cent_amount}')
     elif user_country == 'Britain':
         for country_value_dict in coin_value_list:
@@ -210,9 +218,11 @@ def count_coins(coin_value_list):
         five_pence_amount = 0
         two_pence_amount = 0
         one_pence_amount = 0
-        user_amount = float(get_coin_amount(coin_type))
+        user_amount = round(get_coin_amount(coin_type))
+        total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 2)
+            print(user_amount)
             if user_amount >= 2:
                 user_amount -= BR_dict['two_pounds']['coin_value']
                 two_pound_amount += 1
@@ -234,10 +244,10 @@ def count_coins(coin_value_list):
             elif user_amount <= .04 and user_amount >= .02:
                 user_amount -= BR_dict['two_pence']['coin_value']
                 two_pence_amount += 1
-            elif user_amount < .02  and user_amount != 0:
+            elif user_amount > 0:
                 user_amount -= BR_dict['one_pence']['coin_value']
                 one_pence_amount += 1
-        print(f'From your total amount {user_amount} there was:')
+        print(f'From your total amount {total_amount} there was:')
         print(f'This many two pound coins: {two_pound_amount}')
         print(f'This many one pound coins: {one_pound_amount}')
         print(f'This many fifty pence coins: {fifty_pence_amount}')
@@ -258,6 +268,7 @@ def count_coins(coin_value_list):
         one_hundred_yen_amount = 0
         five_hundred_yen_amount = 0
         user_amount = float(get_coin_amount(coin_type))
+        total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 0)
             int(user_amount)
@@ -280,7 +291,7 @@ def count_coins(coin_value_list):
             elif user_amount >= 1:
                 user_amount -= JP_dict['one_yen']['coin_value']
                 one_yen_amount += 1
-        print(f'From your total amount {user_amount} there was:')
+        print(f'From your total amount {total_amount} there was:')
         print(f'This many five hundred yen coins: {five_hundred_yen_amount}')
         print(f'This many one hundred yen coins: {one_hundred_yen_amount}')
         print(f'This many fifty yen coins: {fifty_yen_amount}')
@@ -300,6 +311,7 @@ def count_coins(coin_value_list):
         five_jiao_amount = 0
         one_yuan_amount = 0
         user_amount = float(get_coin_amount(coin_type))
+        total_amount = copy.copy(user_amount)
         #A while loop to find all the coins inside the specifc amount of yuans
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 2)
@@ -324,7 +336,7 @@ def count_coins(coin_value_list):
             elif user_amount < .02 and user_amount != 0:
                 user_amount -= CH_dict['one_fen']['coin_value']
                 one_fen_amount += 1
-        print(f'From your total amount {user_amount} there was:')
+        print(f'From your total amount {total_amount} there was:')
         print(f'This many one yuan coins: {one_yuan_amount}')
         print(f'This many five jiao coins: {five_jiao_amount}')
         print(f'This many two jiao coins: {two_jiao_amount}')
