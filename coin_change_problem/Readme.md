@@ -2,12 +2,12 @@
 
 ## Project Description
 ---
-This is the Coin Change Problem solver which turns all amounts of any type of dollar and such into the amount of coins it would be.
+This is the Coin Change Problem solver which turns all amounts of any type of dollar and such into the amount of coins it would be.  
 
 ## Installation
 ---
 1. To install this program you need to import the files in the coin_change_problem folder.
-2. Do not be concerned if a new folder called pycache appears as that is important for the program to run.   
+2. Do not be concerned if a new folder called pycache appears as that is important for the program to run.  
 
 ## Execution and Usage
 ---
@@ -44,6 +44,6 @@ I am a simple Computer Programming 2 Student (CS1500). I am still learning how t
 
 ## Changelog
 ---
-  
+
 ## Liscense
 ---

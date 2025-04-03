@@ -12,7 +12,7 @@ def count_coins(coin_value_list):
         return country
     def get_coin_amount(coin_type):
         while True:
-            amount = str(inquirer.text(message=f'How many {coin_type} do you have? (will get auto rounded to two decimals):').execute())
+            amount = str(inquirer.text(message=f'How many {coin_type} do you have? (will get auto rounded to two decimals (unless you do japanese currency then it will be rounded to integers)):').execute())
             if amount.isnumeric():
                 amount = int(amount)
                 if amount >= 0 and amount != 0:
@@ -78,7 +78,7 @@ def count_coins(coin_value_list):
         five_euro_cent_amount = 0
         two_euro_cent_amount = 0
         one_euro_cent_amount = 0
-        user_amount = round(get_coin_amount(coin_type))
+        user_amount = round(get_coin_amount(coin_type), 2)
         total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 2)
@@ -128,7 +128,7 @@ def count_coins(coin_value_list):
         five_pence_amount = 0
         two_pence_amount = 0
         one_pence_amount = 0
-        user_amount = round(get_coin_amount(coin_type))
+        user_amount = round(get_coin_amount(coin_type), 2)
         total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 2)
@@ -177,7 +177,7 @@ def count_coins(coin_value_list):
         fifty_yen_amount = 0
         one_hundred_yen_amount = 0
         five_hundred_yen_amount = 0
-        user_amount = float(get_coin_amount(coin_type))
+        user_amount = round(get_coin_amount(coin_type), 0)
         total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 0)
@@ -220,7 +220,7 @@ def count_coins(coin_value_list):
         two_jiao_amount = 0
         five_jiao_amount = 0
         one_yuan_amount = 0
-        user_amount = float(get_coin_amount(coin_type))
+        user_amount = round(get_coin_amount(coin_type), 2)
         total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 2)
