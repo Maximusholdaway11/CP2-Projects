@@ -1,5 +1,4 @@
 #Max Holdaway Coin Change Problem: Coin Change function(s)
-import csv
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
 from InquirerPy.separator import Separator
@@ -15,19 +14,21 @@ def count_coins(coin_value_list):
     #Inner function that gets the amount of money to coin change also servers as my user input validiation and edge testing
     def get_coin_amount(coin_type):
         while True:
-            amount = str(inquirer.text(message=f'How many {coin_type} do you have? (will get auto rounded to two decimals):').execute())
+            amount = str(inquirer.text(message=f'How many {coin_type} do you have? (will get auto rounded to two decimals (unless you do japanese currency then it will be rounded to integers)):').execute())
             if amount.isnumeric():
-                if amount >= 0:
-                    return int(amount)
+                amount = int(amount)
+                if amount >= 0 and amount != 0:
+                    return amount
                 else:
-                    print("No negative numbers those don't work with coins.")
+                    print("No negative numbers those don't work with coins. And if you put zero that also doesn't work with coins.")
             else:
                 try:
-                    if amount >= 0:
-                        return float(amount)
+                    amount = float(amount)
+                    if amount >= 0 and amount != 0:
+                        return amount
                     else:
-                        print("No negative numbers those don't work with coins.")
-                except ValueError:
+                        print("No negative numbers those don't work with coins. And if you put zero that also doesn't work with coins.")
+                except:
                     print("Please type in a number (you can include decimals).")
     user_country = get_country()
     if user_country == 'United States':
@@ -79,7 +80,7 @@ def count_coins(coin_value_list):
         five_euro_cent_amount = 0
         two_euro_cent_amount = 0
         one_euro_cent_amount = 0
-        user_amount = round(get_coin_amount(coin_type))
+        user_amount = round(get_coin_amount(coin_type), 2)
         total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 2)
@@ -129,7 +130,7 @@ def count_coins(coin_value_list):
         five_pence_amount = 0
         two_pence_amount = 0
         one_pence_amount = 0
-        user_amount = round(get_coin_amount(coin_type))
+        user_amount = round(get_coin_amount(coin_type), 2)
         total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 2)
@@ -178,7 +179,7 @@ def count_coins(coin_value_list):
         fifty_yen_amount = 0
         one_hundred_yen_amount = 0
         five_hundred_yen_amount = 0
-        user_amount = float(get_coin_amount(coin_type))
+        user_amount = round(get_coin_amount(coin_type), 0)
         total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 0)
@@ -221,9 +222,8 @@ def count_coins(coin_value_list):
         two_jiao_amount = 0
         five_jiao_amount = 0
         one_yuan_amount = 0
-        user_amount = float(get_coin_amount(coin_type))
+        user_amount = round(get_coin_amount(coin_type), 2)
         total_amount = copy.copy(user_amount)
-        #A while loop to find all the coins inside the specifc amount of yuans
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 2)
             if user_amount >= 1:
