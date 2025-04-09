@@ -167,5 +167,3 @@ def main():
             print("You have not selected one of the options please try again.")
             #Bypassing this iteration of the calculator
             continue
-
-main()
