@@ -139,5 +139,3 @@ def main():
                 break
         else:
             print("You have not typed in a number please try again.")
-
-main()
