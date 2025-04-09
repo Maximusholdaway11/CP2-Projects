@@ -134,7 +134,6 @@ def count_coins(coin_value_list):
         total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 2)
-            print(user_amount)
             if user_amount >= 2:
                 user_amount -= BR_dict['two_pounds']['coin_value']
                 two_pound_amount += 1
@@ -183,8 +182,6 @@ def count_coins(coin_value_list):
         total_amount = copy.copy(user_amount)
         while user_amount > 0 and user_amount != 0:
             user_amount = round(user_amount, 0)
-            int(user_amount)
-            print(user_amount)
             if user_amount >= 500:
                 user_amount -= JP_dict['five_hundred_yen']['coin_value']
                 five_hundred_yen_amount += 1
