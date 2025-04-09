@@ -75,7 +75,7 @@ def SalesPriceCalculator(CostOfItem, Discount):
     #Applying the discount
     CostOfItem -= DiscountOfItem
     #Using the CostOfItem to show the user the discount
-    return CostOfItem
+    return round(CostOfItem, 2)
 
 #Function for calculating tip price
 def TipCalculator(PriceOfItems):
