@@ -15,5 +15,3 @@ def main():
         elif user_input == 'Exit':
             print("Hope this coin change program was useful goodbye!")
             break
-
-main()
