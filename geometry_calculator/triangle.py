@@ -8,8 +8,12 @@ class triangle:
         self.side_2 = side_2
         self.side_3 = side_3
         self.name = name
+        self.type = "Triangle"
     
     def __str__(self):
+        return f"These are the attributes of your triangle:\nName of triangle: {self.name}\nSide one of triangle: {self.side_1}\nSide two of triangle: {self.side_2}\nSide three if triangle: {self.side_3}\nBase of triangle: {self.base}\nHeight of triangle: {self.height}"
+
+    def show_name(self):
         return f"{self.name}"
 
     def calc_perimeter(self):
@@ -17,5 +21,6 @@ class triangle:
         return perimeter
     
     def calc_area(self):
-        area = self.base * self.height
+        area = 0.5*(self.base * self.height)
+        area = round(area, 2)
         return area
