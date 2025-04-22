@@ -12,7 +12,7 @@ class circle:
         return f"These are the attributes of your circle:\nName of circle: {self.name}\nRadius of your circle: {self.radius}\nDiameter of your circle: {self.diameter}"
 
     def show_name(self):
-        return f"{self.name}"
+        return self.name
 
     def calc_perimeter(self):
         perimeter = self.diameter * math.pi
