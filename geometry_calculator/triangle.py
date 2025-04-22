@@ -14,7 +14,7 @@ class triangle:
         return f"These are the attributes of your triangle:\nName of triangle: {self.name}\nSide one of triangle: {self.side_1}\nSide two of triangle: {self.side_2}\nSide three if triangle: {self.side_3}\nBase of triangle: {self.base}\nHeight of triangle: {self.height}"
 
     def show_name(self):
-        return f"{self.name}"
+        return self.name
 
     def calc_perimeter(self):
         perimeter = self.side_1 + self.side_2 + self.side_3
